@@ -4,7 +4,11 @@
     font-size: 16px;
 }
 body {
-    background-color: #435165;
+    background-image: url('images/vadim-sadovski-AH7oKSGbvYE-unsplash.jpg');
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
 }
 .login {
     width: 400px;

@@ -1,0 +1,21 @@
+*{
+    padding: 0px;
+    margin: 0px;
+
+}
+
+.container{
+    
+    position: absolute;
+    top: 90px;
+    left: 70px;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}
+.tableForEruption{
+    margin-left: 30px;
+    margin-top: 20px;
+}
