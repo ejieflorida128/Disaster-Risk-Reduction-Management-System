@@ -64,7 +64,7 @@ include('../includes/footer.php');
 
 
         <!-- Modal for Edit Details -->
-<div class="modal fade" id="viewDetails" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="viewDetails" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="margin-top: 90px;">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
