@@ -83,7 +83,7 @@ include('../includes/footer.php');
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick = "refreshIfClose()"></button>
                     </div>
                     <div class="modal-body">
-                        <p>You have Successfully Delted the selected Disaster Information!</p>
+                        <p>You have Successfully DelEted the selected Disaster Information!</p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-bs-dismiss="modal" onclick = "refreshIfClose()">Close</button>

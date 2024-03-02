@@ -11,7 +11,7 @@ include('../includes/footer.php');
     <title>Earthquake</title>
     <link rel = "stylesheet" href = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <script src = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="manage.css">
+    <link rel="stylesheet" href="earthquake.css">
 </head>
 <body>
 
@@ -20,43 +20,13 @@ include('../includes/footer.php');
         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="black" style = "position: absolute; top: 28px; right: 110px;" class="bi bi-search" viewBox="0 0 16 16">
         <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
         </svg>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#putDisasterIntoDb" style = "margin-top: 70px; margin-left: 10px; box-shadow: 0 4px 8px rgba(4, 4, 4, 1.1);  ">
-            Earthquake Information
-        </button>
-
-
-            <div class="modal fade" id="putDisasterIntoDb" style="margin-top: 100px;" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Save Disaster Information</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="refreshIfClose()"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label for="disaster_name">Disaster Name:</label><br>
-                            <input type="text" class="form-control" id="disaster_name" required>
-                            <label for="disaster_location">Disaster Location:</label><br>
-                            <input type="text" class="form-control" id="disaster_location" required>
-                            <select name="disaster_type" id = "disaster_type" class = "btn btn-warning" style = "margin-top: 10px; box-shadow: 0 4px 8px rgba(4, 4, 4, 1.1);">
-                                <option value="Earthquake">Earthquake</option>
-                                <option value="Eruption">Volcano Eruption</option>
-                                <option value="Tsunami">Tsunami</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" onclick="refreshIfClose()">Cancel</button>
-                        <button type="button" class="btn btn-success" data-bs-dismiss="modal" onclick = "SaveDisasterInformationToDb()">Confirm Save</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
+        
+        <a href="manage.php" class = "btn btn-primary"  style = "margin-top: 70px; margin-left: 10px; box-shadow: 0 4px 8px rgba(4, 4, 4, 1.1);  "  >
+        Register Earthquake Disaster
+        </a>
 
          <!-- Notification Modal for  Credentials reation -->
-         <div class="modal" tabindex="-1" id="SuccessulSaveDataDisasterInDb" style="margin-top: 150px;">
+         <div class="modal" tabindex="-1" id="SuccessfullyEditedInformation" style="margin-top: 150px;">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -64,7 +34,7 @@ include('../includes/footer.php');
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick = "refreshIfClose()"></button>
                     </div>
                     <div class="modal-body">
-                        <p>You have Successfully Added a new Disaster Information!</p>
+                        <p>You have Successfully Edited a Disaster Information!</p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-bs-dismiss="modal" onclick = "refreshIfClose()">Close</button>
@@ -83,7 +53,7 @@ include('../includes/footer.php');
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick = "refreshIfClose()"></button>
                     </div>
                     <div class="modal-body">
-                        <p>You have Successfully Delted the selected Disaster Information!</p>
+                        <p>You have Successfully Deleted the selected Disaster Information!</p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-bs-dismiss="modal" onclick = "refreshIfClose()">Close</button>
@@ -93,13 +63,77 @@ include('../includes/footer.php');
         </div>
 
 
+        <!-- Modal for Edit Details -->
+<div class="modal fade" id="viewDetails" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Disaster Information</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      <div class="form-group">
+                            <label for="disaster_name">Disaster Name:</label><br>
+                            <input type="text" class="form-control" id="disaster_name" required>
+                            <label for="disaster_location">Disaster Location:</label><br>
+                            <input type="text" class="form-control" id="disaster_location" required>
+                            <label for="disaster_date">Disaster Date:</label><br>
+                            <input type="text" class="form-control" id="disaster_date" required>
+                            <select name="disaster_type" id = "disaster_type" class = "btn btn-warning" style = "margin-top: 10px; box-shadow: 0 4px 8px rgba(4, 4, 4, 1.1);">
+                                <option value="Earthquake">Earthquake</option>
+                                <option value="Eruption">Volcano Eruption</option>
+                                <option value="Tsunami">Tsunami</option>
+                            </select>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" onclick = "refreshIfClose()">Close</button>
+        <button onclick = "proceedToEditDetails()" class = "btn btn-success" data-bs-dismiss="modal">CONFIRM EDIT</button>
+        <input type = "hidden" id = "hiddenID">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="viewDetailsForView" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style = "margin-top: 100px;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">View Disaster Information</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      <div class="form-group">
+                            <label for="Vdisaster_name">Disaster Name:</label><br>
+                            <input type="text" class="form-control" id="Vdisaster_name" required disabled>
+                            <label for="Vdisaster_location">Disaster Location:</label><br>
+                            <input type="text" class="form-control" id="Vdisaster_location" required disabled>
+                            <label for="Vdisaster_date">Disaster Date:</label><br>
+                            <input type="text" class="form-control" id="Vdisaster_date" required disabled>
+                            <select name="Vdisaster_type" id = "Vdisaster_type" class = "btn btn-warning" style = "margin-top: 10px; box-shadow: 0 4px 8px rgba(4, 4, 4, 1.1);" disabled>
+                                <option value="Earthquake">Earthquake</option>
+                                <option value="Eruption">Volcano Eruption</option>
+                                <option value="Tsunami">Tsunami</option>
+                            </select>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" onclick = "refreshIfClose()">Close</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
 
 
 
 
 
 
-            <div class="tableForDisasterRegister" id = "tableForDisasterRegister">
+
+
+            <div class="tableForEarthquakeDisaster" id = "tableForEarthquakeDisaster">
                 <!-- table created for register disaster -->
             </div>
     </div>
@@ -110,62 +144,42 @@ include('../includes/footer.php');
 
 <script>
     $(document).ready(function () {
-        DisplayAllDisasterInDb(null);
+        DisplayEarthquakeTable(null);
 
         // Bind refresh function to modal close event
         $('.modal').on('hidden.bs.modal', function () {
-            DisplayAllDisasterInDb(null);
+            DisplayEarthquakeTable(null);
         });
 
         $("#searchBar").on('input', function () {
             var value = $(this).val();
-            DisplayAllDisasterInDb(value);
+            DisplayEarthquakeTable(value);
         });         
     });
 
-    function DisplayAllDisasterInDb(value) {
+    function DisplayEarthquakeTable(value) {
         $.ajax({
             url: "ajax.php",
             type: 'post',
             data: {
-                displayTableOfAllDataInDb: true,
+                DisplayEarthquakeTable: true,
                 value:value
             },
             success: function (data, status) {
                 console.log(data); // Check the data in the console
-                $('#tableForDisasterRegister').html(data);                       
+                $('#tableForEarthquakeDisaster').html(data);                       
             }
         });
     }
 
-    function SaveDisasterInformationToDb(){
-       
-        var D_name = $('#disaster_name').val();
-        var D_location = $('#disaster_location').val();
-        var D_type = $('#disaster_type').val();
-        $.ajax({
-            url: "ajax.php",
-            type: 'post',
-            data: {
-                SaveDisasterInformationToDb: true,
-                D_name:D_name,
-                D_location:D_location,
-                D_type:D_type
-            },
-            success: function (data, status) {
-                console.log(data); // Check the data in the console     
-                $('#SuccessulSaveDataDisasterInDb').modal('show');      
-            }
-        });
-    }
 
-    function DeleteSaveInformationOfDisasterInDb(id){
+    function DeleteEarthquakeDisaster(id){
         var id = id;
         $.ajax({
             url: "ajax.php",
             type: 'post',
             data: {
-                DeleteThisSelectedDisasterInformationInDb: true,
+                DeleteEarthquakeDisaster: true,
                 id:id
            
             },
@@ -174,6 +188,78 @@ include('../includes/footer.php');
                 $('#SuccessfullyDeltedFromDb').modal('show');      
             }
         });
+    }
+
+    function ViewDetails(id){
+
+
+        $.post("ajax.php", { EarthquakeId: id }, function(data, status) {
+                                console.log(data); // Log the raw response to the console
+
+                                var details = JSON.parse(data);
+                                
+                                $('#hiddenID').val(details.id);
+                                $('#disaster_name').val(details.name);
+                                $('#disaster_location').val(details.location);                              
+                                $('#disaster_date').val(details.date);
+                                $('#disaster_type').val(details.type);
+                              
+                               
+                                
+                            });
+
+                            $('#viewDetails').modal('show');
+
+    }
+
+     function ViewDetailsoforView(id){
+
+
+        $.post("ajax.php", { EarthquakeId: id }, function(data, status) {
+                                console.log(data); // Log the raw response to the console
+
+                                var details = JSON.parse(data);
+                                
+                              
+                                $('#Vdisaster_name').val(details.name);
+                                $('#Vdisaster_location').val(details.location);                              
+                                $('#Vdisaster_date').val(details.date);
+                                $('#Vdisaster_type').val(details.type);
+                              
+                               
+                                
+                            });
+
+                            $('#viewDetailsForView').modal('show');
+
+    }
+
+    function proceedToEditDetails(){
+        var id = $('#hiddenID').val();
+
+        var disaster_name = $('#disaster_name').val();
+        var disaster_location = $('#disaster_location').val();
+        var disaster_date = $('#disaster_date').val();
+        var disaster_type = $('#disaster_type').val();
+
+        $.ajax({
+            url: "ajax.php",
+            type: 'post',
+            data: {
+                EditEarthquake: true,
+                id:id,
+                disaster_name:disaster_name,
+                disaster_location:disaster_location,
+                disaster_date:disaster_date,
+                disaster_type:disaster_type
+           
+            },
+            success: function (data, status) {
+                console.log(data); // Check the data in the console     
+                $('#SuccessfullyEditedInformation').modal('show');      
+            }
+        });
+
     }
 </script>
 
