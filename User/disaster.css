@@ -1,0 +1,22 @@
+*{
+    padding: 0px;
+    margin: 0px;
+
+}
+
+.container{
+    
+    position: absolute;
+    top: 90px;
+    left: 70px;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}
+
+.TableForAllDisaster{
+    margin-left: 30px;
+    margin-top: 80px;
+}

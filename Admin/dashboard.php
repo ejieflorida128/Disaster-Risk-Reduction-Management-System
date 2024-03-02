@@ -32,7 +32,7 @@ include('../includes/footer.php');
                         </div>
                 </div>
                 </a>
-               <a href="earthquake" id = "tet">
+               <a href="earthquake.php" id = "tet">
                <div class="box">
                 <div class="title">
                             Earthquakes

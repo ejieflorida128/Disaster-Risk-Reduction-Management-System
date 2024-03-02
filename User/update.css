@@ -1,0 +1,43 @@
+*{
+    padding: 0px;
+    margin: 0px;
+
+}
+
+.container{
+    
+    position: absolute;
+    top: 90px;
+    left: 70px;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}
+
+.DisplayAllUpdates{
+    margin-left: 30px;
+    margin-top: 80px;
+}
+
+.section1{
+    padding: 60px;
+    box-shadow: 0 4px 8px rgba(4, 4, 4, 1.1);
+    border-radius: 10px;
+}
+
+.counts{
+    margin-left: 800px;
+    margin-top: 100px;
+
+}
+
+.section1:hover{
+    background-color: black;
+    color: white;
+}
+
+.title, .icon,.count{
+    padding: 2px;
+}

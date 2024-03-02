@@ -123,15 +123,24 @@ if(isset($_POST['SaveDisasterInformationToDb']) && $_POST['SaveDisasterInformati
         $D_name = $_POST['D_name'];
         $D_location = $_POST['D_location'];
         $D_type = $_POST['D_type'];
+
+        $txt = "The Admin added a new Information of a recent Disaster Event!";
  
-        $sql = "INSERT INTO disaster (name,location,type) VALUES ('$D_name','$D_location','$D_type')";
-        mysqli_query($conn,$sql);
+        $sql = "INSERT INTO disaster (name,location,type) VALUES ('$D_name','$D_location','$D_type');
+                INSERT INTO updates (message) VALUES ('$txt');
+        
+        ";
+        mysqli_multi_query($conn,$sql);
 }
 
 if(isset($_POST['DeleteThisSelectedDisasterInformationInDb']) && $_POST['DeleteThisSelectedDisasterInformationInDb'] == true){
         $id = $_POST['id'];
-        $sql = "DELETE FROM disaster WHERE id = $id";
-        mysqli_query($conn,$sql);
+
+        $txt = "The Admin deleted an Information of a Disaster Event!";
+        $sql = "DELETE FROM disaster WHERE id = $id;
+                INSERT INTO updates (message) VALUES ('$txt');
+        ";
+       mysqli_multi_query($conn,$sql);
 }
 
 
@@ -257,8 +266,12 @@ if (isset($_POST['DisplayEarthquakeTable']) && $_POST['DisplayEarthquakeTable'] 
 
 if(isset($_POST['DeleteEarthquakeDisaster']) && $_POST['DeleteEarthquakeDisaster'] == true){
     $id = $_POST['id'];
-    $sql = "DELETE FROM disaster WHERE id = $id";
-    mysqli_query($conn,$sql);
+
+    $txt = "The Admin deleted an Information of an Earthquake Disaster Event!";
+    $sql = "DELETE FROM disaster WHERE id = $id;
+            INSERT INTO updates (message) VALUES ('$txt');
+    ";
+    mysqli_multi_query($conn,$sql);
 }
 
 if(isset($_POST['EarthquakeId'])){
@@ -286,8 +299,12 @@ if(isset($_POST['EditEarthquake']) && $_POST['EditEarthquake'] == true){
     $disaster_date = $_POST['disaster_date'];
     $disaster_type = $_POST['disaster_type'];
 
-    $sql = "UPDATE disaster SET name = '$disaster_name', location  = '$disaster_location', date = '$disaster_date', type = '$disaster_type' WHERE id = $id";
-    mysqli_query($conn,$sql);
+    $txt = "The Admin Edited an Information of an Earthquake Disaster Event!";
+
+    $sql = "UPDATE disaster SET name = '$disaster_name', location  = '$disaster_location', date = '$disaster_date', type = '$disaster_type' WHERE id = $id;
+            INSERT INTO updates (message) VALUES ('$txt');
+        ";
+    mysqli_multi_query($conn,$sql);
 }
 
 
@@ -418,8 +435,12 @@ if (isset($_POST['DisplayTableForTsunami']) && $_POST['DisplayTableForTsunami'] 
 
 if(isset($_POST['DeleteTsunamiDisaster']) && $_POST['DeleteTsunamiDisaster'] == true){
     $id = $_POST['id'];
-    $sql = "DELETE FROM disaster WHERE id = $id";
-    mysqli_query($conn,$sql);
+
+    $txt = "The Admin deleted an Information of an Tsunami Disaster Event!";
+    $sql = "DELETE FROM disaster WHERE id = $id;
+            INSERT INTO updates (message) VALUES ('$txt');
+            ";
+    mysqli_multi_query($conn,$sql);
 }
 
 if(isset($_POST['TsunamiId'])){
@@ -447,8 +468,12 @@ if(isset($_POST['EditTsunami']) && $_POST['EditTsunami'] == true){
     $disaster_date = $_POST['disaster_date'];
     $disaster_type = $_POST['disaster_type'];
 
-    $sql = "UPDATE disaster SET name = '$disaster_name', location  = '$disaster_location', date = '$disaster_date', type = '$disaster_type' WHERE id = $id";
-    mysqli_query($conn,$sql);
+    $txt = "The Admin Edited an Information of a Tsunami Disaster Event!";
+
+    $sql = "UPDATE disaster SET name = '$disaster_name', location  = '$disaster_location', date = '$disaster_date', type = '$disaster_type' WHERE id = $id;
+            INSERT INTO updates (message) VALUES ('$txt');
+    ";
+    mysqli_multi_query($conn,$sql);
 }
 
 
@@ -579,8 +604,12 @@ if (isset($_POST['tableForEruption']) && $_POST['tableForEruption'] == true) {
 
 if(isset($_POST['DeleteEruptionDisaster']) && $_POST['DeleteEruptionDisaster'] == true){
     $id = $_POST['id'];
-    $sql = "DELETE FROM disaster WHERE id = $id";
-    mysqli_query($conn,$sql);
+
+    $txt = "The Admin deleted an Information of an Volcano Eruption Disaster Event!";
+    $sql = "DELETE FROM disaster WHERE id = $id;
+            INSERT INTO updates (message) VALUES ('$txt');
+    ";
+    mysqli_multi_query($conn,$sql);
 }
 
 if(isset($_POST['EruptionId'])){
@@ -608,7 +637,11 @@ if(isset($_POST['EditEruption']) && $_POST['EditEruption'] == true){
     $disaster_date = $_POST['disaster_date'];
     $disaster_type = $_POST['disaster_type'];
 
-    $sql = "UPDATE disaster SET name = '$disaster_name', location  = '$disaster_location', date = '$disaster_date', type = '$disaster_type' WHERE id = $id";
-    mysqli_query($conn,$sql);
+    $txt = "The Admin Edited an Information of an Volcano Eruption Disaster Event!";
+
+    $sql = "UPDATE disaster SET name = '$disaster_name', location  = '$disaster_location', date = '$disaster_date', type = '$disaster_type' WHERE id = $id;
+            INSERT INTO updates (message) VALUES ('$txt')
+        ";
+    mysqli_multi_query($conn,$sql);
 }
 ?>

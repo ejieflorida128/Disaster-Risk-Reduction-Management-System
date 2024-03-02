@@ -1,4 +1,5 @@
 <?php
+session_start();
         include("connection/conn.php");
 
         if($_SERVER['REQUEST_METHOD'] == "POST"){
@@ -14,6 +15,7 @@
                 while($test = mysqli_fetch_assoc($query)){
                     if($test['username'] == $username){
                         if($test['password'] == $password){
+                            $_SESSION['id'] = $test['id'];
                             $check = 1; // This should be $check = 1; for regular users
                         }
                     }else if($username == "admin" || $username == "ADMIN"){

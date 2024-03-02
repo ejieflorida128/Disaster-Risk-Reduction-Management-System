@@ -6,8 +6,12 @@
             $fullname = $_POST['fullname'];
             $username = $_POST['username'];
             $password = $_POST['password'];
+			$img = "../profile_pictures/default.jpg";
+			$gmail = "Please Input information here!"; 
+			$location = "Please Input information here!";  
+			$number = "0000-000-0000";
 
-            $sql = "INSERT INTO user_account (fullname,username,password) VALUES ('$fullname','$username','$password')";
+            $sql = "INSERT INTO user_account (img,fullname,username,password,gmail,location,number) VALUES ('$img','$fullname','$username','$password','$gmail','$location')";
             mysqli_query($conn,$sql);
 
             echo "
